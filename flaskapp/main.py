@@ -16,9 +16,13 @@ def about(title='About Page'):
 def example(title='Example Page'):
     return render_template('foundation/example.html', title=title)
 
-@app.route('/test')
+@app.route('/test/')
 def test(title='Test Page'):
     return render_template('theme/about.html', title=title)
+
+@app.route('/<path:path>')
+def catch_all(path, title='Catch All'):
+	return render_template('theme/about.html', title=title, path=path)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
